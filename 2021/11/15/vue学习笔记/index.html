@@ -716,7 +716,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/11.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/13.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -1137,7 +1137,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$route.params.id</span><br><span class="line">$route.params.title</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="7-路由的props配置"><a href="#7-路由的props配置" class="headerlink" title="7.路由的props配置"></a>7.路由的props配置</h3><p>​    作用：让路由组件更方便的收到参数</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;xiangqing&#x27;</span>,</span><br><span class="line">	<span class="attr">path</span>:<span class="string">&#x27;detail/:id&#x27;</span>,</span><br><span class="line">	<span class="attr">component</span>:Detail,</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第一种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给Detail组件</span></span><br><span class="line">	<span class="comment">// props:&#123;a:900&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二种写法：props值为布尔值，布尔值为true，则把路由收到的所有params参数通过props传给Detail组件</span></span><br><span class="line">	<span class="comment">// props:true</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给Detail组件</span></span><br><span class="line">	<span class="function"><span class="title">props</span>(<span class="params">route</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">id</span>:route.query.id,</span><br><span class="line">			<span class="attr">title</span>:route.query.title</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">name</span>:<span class="string">&#x27;xiangqing&#x27;</span>,</span><br><span class="line">	<span class="attr">path</span>:<span class="string">&#x27;detail/:id&#x27;</span>,</span><br><span class="line">	<span class="attr">component</span>:Detail,</span><br><span class="line"></span><br><span class="line">	<span class="comment">//第一种写法：props值为对象，该对象中所有的key-value的组合最终都会通过props传给Detail组件</span></span><br><span class="line">	<span class="comment">// props:&#123;a:900&#125;</span></span><br><span class="line"></span><br><span class="line">	<span class="comment">//第二种写法：props值为布尔值，布尔值为true，则把路由收到的所有params参数通过props传给Detail组件</span></span><br><span class="line">	<span class="comment">// props:true</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//第三种写法：props值为函数，该函数返回的对象中每一组key-value都会通过props传给Detail组件</span></span><br><span class="line">	<span class="function"><span class="title">props</span>(<span class="params">route</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;</span><br><span class="line">			<span class="attr">id</span>:route.query.id,</span><br><span class="line">			<span class="attr">title</span>:route.query.title</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//结构连续赋值写法</span></span><br><span class="line">    <span class="function"><span class="title">props</span>(<span class="params">&#123;query:&#123;id,title&#125;&#125;</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> &#123;id,title&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="8-lt-router-link-gt-的replace属性"><a href="#8-lt-router-link-gt-的replace属性" class="headerlink" title="8.&lt;router-link&gt;的replace属性"></a>8.<code>&lt;router-link&gt;</code>的replace属性</h3><ol>
 <li>作用：控制路由跳转时操作浏览器历史记录的模式</li>
@@ -1220,11 +1220,28 @@
 
 
 
+  
+  <div class="post-nav-prev post-nav-item">
+    <div class="post-nav-img lazyload" data-original="/medias/8.jpg" style="background-size: cover; 
+      background-position: center center;">
+    </div>
+    <a href="/2021/11/25/Docker%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-nav-link">
+      <div class="title">
+        <i class="fa fa-angle-left"></i> 上一篇:
+        <div>Docker使用教程</div>
+      </div>
+      
+      <!-- <div class="content">
+        Docker使用教程详细文档：https://yeasy.gitbook.io/docker_practice/inst
+      </div> -->
+    </a>
+  </div>
+
 
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/7.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
     <a href="/2021/11/09/%E6%90%AD%E5%BB%BA%E6%8E%88%E6%9D%83%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-nav-link">
