@@ -10,7 +10,7 @@
   <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-  <title>Docker使用教程 | Testing</title>
+  <title>Linux搭建反向代理和git | Testing</title>
 
   
     
@@ -716,7 +716,7 @@
 
 
 
-<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/8.jpg" style="background-repeat: no-repeat; background-size: cover; 
+<div class="post-detail-header lazyload" id="thumbnail_canvas" data-original="/medias/4.jpg" style="background-repeat: no-repeat; background-size: cover; 
   background-position: center center;position: relative;">
   <div class="post-detail-header-mask"></div>
   <canvas id="header_canvas"style="position:absolute;bottom:0;pointer-events:none;"></canvas>
@@ -727,7 +727,7 @@
         <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
           <script>
             var typed = new Typed("#post-detail-header-title", {
-              strings: ['Docker使用教程'],
+              strings: ['Linux搭建反向代理和git'],
               startDelay: 100,
               typeSpeed: 100,
               loop: false,
@@ -752,7 +752,7 @@
       
       <div class="post-meta">
         <i class="fa fa-clock-o" aria-hidden="true"></i>
-        <span class="post-time">2021-11-25</span>
+        <span class="post-time">2022-04-23</span>
       </div>
       
       <div class="post-tags-categories">
@@ -760,64 +760,22 @@
         
       </div>
       <div class="post-content">
-        <h1 id="Docker使用教程"><a href="#Docker使用教程" class="headerlink" title="Docker使用教程"></a>Docker使用教程</h1><p>详细文档：<a target="_blank" rel="noopener" href="https://yeasy.gitbook.io/docker_practice/install/centos">https://yeasy.gitbook.io/docker_practice/install/centos</a></p>
-<h2 id="1、centos下安装docker"><a href="#1、centos下安装docker" class="headerlink" title="1、centos下安装docker"></a>1、centos下安装docker</h2><h4 id="1、移除以前docker的相关包"><a href="#1、移除以前docker的相关包" class="headerlink" title="1、移除以前docker的相关包"></a>1、移除以前docker的相关包</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker docker-*</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、配置yum源"><a href="#2、配置yum源" class="headerlink" title="2、配置yum源"></a>2、配置yum源</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br><span class="line">sudo yum-config-manager \</span><br><span class="line">--add-repo \</span><br><span class="line">http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
-
-<h4 id="3、安装docker"><a href="#3、安装docker" class="headerlink" title="3、安装docker"></a>3、安装docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y docker-ce docker-ce-cli containerd.io</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#以下是在安装k8s的时候使用</span></span><br><span class="line">yum install -y docker-ce-20.10.7 docker-ce-cli-20.10.7  containerd.io-1.4.6</span><br></pre></td></tr></table></figure>
-
-<h4 id="4、启动docker"><a href="#4、启动docker" class="headerlink" title="4、启动docker"></a>4、启动docker</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> docker --now</span><br></pre></td></tr></table></figure>
-
-<h4 id="5、配置加速"><a href="#5、配置加速" class="headerlink" title="5、配置加速"></a>5、配置加速</h4><p>一般也用不上</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">sudo mkdir -p /etc/docker</span><br><span class="line">sudo tee /etc/docker/daemon.json &lt;&lt;-<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;registry-mirrors&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;https://xxxx.mirror.aliyuncs.com&quot;</span>,</span><br><span class="line">    <span class="string">&quot;https://docker.mirrors.ustc.edu.cn&quot;</span>,</span><br><span class="line">    <span class="string">&quot;http://f1361db2.m.daocloud.io&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line">sudo systemctl daemon-reload</span><br><span class="line">sudo systemctl restart docker</span><br><span class="line"><span class="comment">#查看修改后的配置</span></span><br><span class="line">sudo docker info</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h2><h4 id="1、找镜像"><a href="#1、找镜像" class="headerlink" title="1、找镜像"></a>1、找镜像</h4><p><a target="_blank" rel="noopener" href="https://docs.docker.com/">https://docs.docker.com/</a></p>
-<p>在此网站找自己想要的镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker pull nginx  <span class="comment">#默认下载最新版</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#			镜像名:版本名（标签）</span></span><br><span class="line">docker pull nginx:1.20.1</span><br><span class="line"></span><br><span class="line">docker pull redis  <span class="comment">#下载最新</span></span><br><span class="line">docker pull redis:6.2.4</span><br><span class="line"></span><br><span class="line"><span class="comment">## 下载来的镜像都在本地</span></span><br><span class="line">docker images  <span class="comment">#查看所有镜像</span></span><br><span class="line"></span><br><span class="line">redis = redis:latest</span><br></pre></td></tr></table></figure>
-
-<p>或者可直接用命令搜索</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker search 镜像名</span><br></pre></td></tr></table></figure>
-
-<p>2、启动容器</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line"></span><br><span class="line">【docker run  设置项   镜像名  】 镜像启动运行的命令（镜像里面默认有的，一般不会写）</span><br><span class="line"></span><br><span class="line"><span class="comment"># -d：后台运行</span></span><br><span class="line"><span class="comment"># --restart=always: 开机自启</span></span><br><span class="line"><span class="comment">#		命名 命名的名字中间可加&quot;=&quot;	 将主机的88端口映射到容器的80端口 要启动的镜像名</span></span><br><span class="line">docker run --name mynginx   -d  --restart=always -p  88:80   nginx</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看正在运行的容器</span></span><br><span class="line">docker ps</span><br><span class="line"><span class="comment"># 查看所有(包括停止的容器)</span></span><br><span class="line">docker ps -a</span><br><span class="line"><span class="comment"># 删除停止的容器</span></span><br><span class="line">docker rm  容器id/名字</span><br><span class="line">docker rm -f mynginx   <span class="comment">#强制删除正在运行中的</span></span><br><span class="line"><span class="comment">#删除容器</span></span><br><span class="line">docker rmi 镜像名:版本号/镜像id</span><br><span class="line"></span><br><span class="line"><span class="comment">#停止容器</span></span><br><span class="line">docker stop 容器id/名字</span><br><span class="line"><span class="comment">#再次启动</span></span><br><span class="line">docker start 容器id/名字</span><br><span class="line"></span><br><span class="line"><span class="comment">#应用开机自启</span></span><br><span class="line">docker update 容器id/名字 --restart=always</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、进入容器"><a href="#3、进入容器" class="headerlink" title="3、进入容器"></a>3、进入容器</h3><h4 id="1、以命令行启动"><a href="#1、以命令行启动" class="headerlink" title="1、以命令行启动"></a>1、以命令行启动</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入容器内部的系统，并以/bin/bash启动命令行运行</span></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器id  /bin/bash</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、映射数据到外部，可方便修改"><a href="#2、映射数据到外部，可方便修改" class="headerlink" title="2、映射数据到外部，可方便修改"></a>2、映射数据到外部，可方便修改</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run --name=mynginx   \</span><br><span class="line">-d  --restart=always \</span><br><span class="line">-p  88:80 -v /data/html:/usr/share/nginx/html:ro  \</span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改页面只需要去主机的 /data/html</span></span><br><span class="line"><span class="comment">#将主机内容映射到容器只需调换位置即可</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="4、提交改变"><a href="#4、提交改变" class="headerlink" title="4、提交改变"></a>4、提交改变</h3><blockquote>
-<p>首先要一个dockerhub的账号 然后才能执行以下步骤</p>
+        <h1 id="Linux搭建反向代理和git"><a href="#Linux搭建反向代理和git" class="headerlink" title="Linux搭建反向代理和git"></a>Linux搭建反向代理和git</h1><h4 id="前置："><a href="#前置：" class="headerlink" title="前置："></a>前置：</h4><blockquote>
+<ul>
+<li><h5 id="ubuntun-20-04"><a href="#ubuntun-20-04" class="headerlink" title="ubuntun 20.04"></a>ubuntun 20.04</h5></li>
+<li><h5 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h5></li>
+<li><h5 id="git-core"><a href="#git-core" class="headerlink" title="git-core"></a>git-core</h5></li>
+</ul>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</span><br><span class="line"></span><br><span class="line"><span class="comment">#				提交的是哪个仓库	message  镜像id		镜像名:版本号</span></span><br><span class="line">docker commit -a <span class="string">&quot;message&quot;</span>  -m <span class="string">&quot;首页变化&quot;</span> 341d81f7504f guignginx:v1.0</span><br></pre></td></tr></table></figure>
+<h4 id="先安装git和nginx"><a href="#先安装git和nginx" class="headerlink" title="先安装git和nginx"></a>先安装git和nginx</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install nginx git-core</span><br></pre></td></tr></table></figure>
 
-<h4 id="1、镜像传输"><a href="#1、镜像传输" class="headerlink" title="1、镜像传输"></a>1、镜像传输</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将镜像保存成压缩包</span></span><br><span class="line">docker save -o abc.tar guignginx:v1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 别的机器加载这个镜像</span></span><br><span class="line">docker load -i abc.tar</span><br></pre></td></tr></table></figure>
+<h4 id="配置nginx虚拟站点"><a href="#配置nginx虚拟站点" class="headerlink" title="配置nginx虚拟站点"></a>配置nginx虚拟站点</h4><h5 id="至于为什么在站点目录，我也不知道，maybe比较好管理"><a href="#至于为什么在站点目录，我也不知道，maybe比较好管理" class="headerlink" title="至于为什么在站点目录，我也不知道，maybe比较好管理?"></a>至于为什么在站点目录，我也不知道，maybe比较好管理?</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">cd /etc/nginx/sites-enabled</span><br><span class="line"></span><br><span class="line">vim default</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">负载均衡</span></span><br><span class="line">upstream fanstream &#123;</span><br><span class="line"><span class="meta">		#</span><span class="bash">负载均衡的调度算法</span></span><br><span class="line">        #ip_hash;</span><br><span class="line">        server ipAddr:24;</span><br><span class="line">        server ipAddr:69;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">外网的虚拟机，用于反向代理至内网虚拟机</span></span><br><span class="line">server &#123;</span><br><span class="line">        listen 80 default_server;</span><br><span class="line">        listen [::]:80 default_server;</span><br><span class="line">        #存放index的目录</span><br><span class="line">        root /var/www/html;</span><br><span class="line">        index index.html index.htm index.nginx-debian.html;</span><br><span class="line">        #可配置域名</span><br><span class="line">        server_name _;</span><br><span class="line">        #可配置域名 ps: ^~ /xxx/</span><br><span class="line">        location / &#123;</span><br><span class="line">        		#将反向代理指向负载均衡</span><br><span class="line">                proxy_pass http://fanstream;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">#</span><span class="bash">内网的虚拟机，即虚拟站点，可以配置多台</span></span><br><span class="line">server &#123;</span><br><span class="line">        listen 24 default_server;</span><br><span class="line">        listen [::]:24 default_server;</span><br><span class="line">        #存放index的目录</span><br><span class="line">        root /var/www/qumingnan/blog;</span><br><span class="line">        index index.html index.htm index.nginx-debian.html;</span><br><span class="line">        server_name _;</span><br><span class="line">        #可配置域名 ps: ^~ /xxx/</span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">        &#125;    </span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">        listen 33 default_server;</span><br><span class="line">        listen [::]:33 default_server;</span><br><span class="line">        #存放index的目录</span><br><span class="line">        root /var/www/qumingnan/blog;</span><br><span class="line">        index index.html index.htm index.nginx-debian.html;</span><br><span class="line">        #可配置域名</span><br><span class="line">        server_name _;</span><br><span class="line">        #可配置域名 ps: ^~ /xxx/</span><br><span class="line">        location / &#123;</span><br><span class="line">                try_files $uri $uri/ =404;</span><br><span class="line">        &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="5、推送远程仓库"><a href="#5、推送远程仓库" class="headerlink" title="5、推送远程仓库"></a>5、推送远程仓库</h3><blockquote>
-<p>将镜像推送到自己的docker hub 仓库或应用市场</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 把旧镜像的名字，改成仓库要求的新版名字</span></span><br><span class="line">docker tag guignginx:v1.0 message/guignginx:v1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 登录到docker hub</span></span><br><span class="line">docker login       </span><br><span class="line"></span><br><span class="line">docker <span class="built_in">logout</span>（推送完成镜像后退出）</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推送</span></span><br><span class="line">docker push messgae/guignginx:v1.0</span><br><span class="line"></span><br><span class="line"><span class="comment"># 别的机器下载</span></span><br><span class="line">docker pull messgae/guignginx:v1.0</span><br></pre></td></tr></table></figure>
+<h4 id="然后配置git仓库"><a href="#然后配置git仓库" class="headerlink" title="然后配置git仓库"></a>然后配置git仓库</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">cd /var/www</span><br><span class="line">mkdir qumingnan</span><br><span class="line">cd qumingnan</span><br><span class="line"></span><br><span class="line">useradd git</span><br><span class="line">passwd git qumingnan</span><br><span class="line">git init --bare qumingnan.git</span><br><span class="line">chown -R git:git /var/www/qumingnan/qumingnan.git </span><br><span class="line"></span><br><span class="line">cat /etc/shells # 查看 git-shell 是否在登录方式里面</span><br><span class="line">which git-shell # 查看是否安装</span><br><span class="line">vi /etc/shells</span><br><span class="line"><span class="meta">#</span><span class="bash">添加上2步显示出来的路劲，通常在 /usr/bin/git-shell</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将原来的</span></span><br><span class="line">git:x:1000:1000::/var/www:/bin/bash</span><br><span class="line">·····</span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改为</span></span><br><span class="line">git:x:1000:1000:,,,:/var/www:/usr/bin/git-shell</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">cd qumingnan.git/hooks</span><br><span class="line">vim post-receive</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">嫌太长可配置下面那个</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">GIT_REPO=/var/www/qumingnan/qumingnan.git</span><br><span class="line">TMP_GIT_CLONE=/var/www/qumingnan/tmp</span><br><span class="line">PUBLIC_WWW=/var/www/qumingnan/blog</span><br><span class="line"></span><br><span class="line">rm -rf $&#123;TMP_GIT_CLONE&#125;</span><br><span class="line">git clone $GIT_REPO $TMP_GIT_CLONE</span><br><span class="line">rm -rf $&#123;PUBLIC_WWW&#125;</span><br><span class="line">cp -rf $&#123;TMP_GIT_CLONE&#125; $&#123;PUBLIC_WWW&#125;</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">或者是这个配置这个内容</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/bin/sh</span></span><br><span class="line">git --work-tree=/var/www/qumingnan/blog --git-dir=/var/www/qumingnan/qumingnan.git checkout -f</span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash">最后记得加权限!!!</span></span><br><span class="line"><span class="meta">#</span><span class="bash">最后记得加权限!!!</span></span><br><span class="line"><span class="meta">#</span><span class="bash">最后记得加权限!!!</span></span><br><span class="line">chmod +x post-receive</span><br></pre></td></tr></table></figure>
 
-<h3 id="6、其他"><a href="#6、其他" class="headerlink" title="6、其他"></a>6、其他</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">docker logs 容器名/id   排错</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器id /bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># docker 经常修改nginx配置文件</span></span><br><span class="line">docker run -d -p 80:80 \</span><br><span class="line">-v /data/html:/usr/share/nginx/html:ro \</span><br><span class="line">-v /data/conf/nginx.conf:/etc/nginx/nginx.conf \</span><br><span class="line">--name mynginx-02 \</span><br><span class="line">nginx</span><br><span class="line"></span><br><span class="line"><span class="comment">#把容器指定位置的东西复制出来 </span></span><br><span class="line">docker cp 5eff66eec7e1:/etc/nginx/nginx.conf  /data/conf/nginx.conf</span><br><span class="line"><span class="comment">#把外面的内容复制到容器里面</span></span><br><span class="line">docker cp  /data/conf/nginx.conf  5eff66eec7e1:/etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
+<h4 id="修改hexo的config文件"><a href="#修改hexo的config文件" class="headerlink" title="修改hexo的config文件"></a>修改hexo的config文件</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">repo:</span> <span class="string">git@ipAddr:/var/www/xxx/xxx.git</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="2、Java打包Dockerfile"><a href="#2、Java打包Dockerfile" class="headerlink" title="2、Java打包Dockerfile"></a>2、Java打包Dockerfile</h2><blockquote>
-<p>编写一个不带后缀名的Dockerfile</p>
-</blockquote>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#在dockerhub上寻找openJDK 然后找到当前项目运行java的linux版本</span></span><br><span class="line"><span class="keyword">FROM</span> openjdk:<span class="number">8</span>-jdk-slim</span><br><span class="line"></span><br><span class="line"><span class="comment">#maintainer代表作者</span></span><br><span class="line"><span class="keyword">LABEL</span><span class="bash"> maintainer=qumingnan</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">COPY</span><span class="bash"> target/*.jar   /app.jar</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#镜像的启动命令</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">&quot;java&quot;</span>,<span class="string">&quot;-jar&quot;</span>,<span class="string">&quot;/app.jar&quot;</span>]</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>先将jar和dockerfile上传到服务器</p>
-<p>然后在目标服务器上打包</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t java-demo:v1.0 .</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="部署中间件"><a href="#部署中间件" class="headerlink" title="部署中间件"></a>部署中间件</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">docker run [OPTIONS] IMAGE [COMMAND] [ARG...]</span><br><span class="line"></span><br><span class="line"><span class="comment">#redis使用自定义配置文件启动</span></span><br><span class="line"></span><br><span class="line">docker run -v /data/redis/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-v /data/redis/data:/data \</span><br><span class="line">-d --name myredis \</span><br><span class="line">-p 6379:6379 \</span><br><span class="line">redis:latest  redis-server /etc/redis/redis.conf</span><br></pre></td></tr></table></figure>
-
-
+<h4 id="最后将hexo-d推上去就ok"><a href="#最后将hexo-d推上去就ok" class="headerlink" title="最后将hexo d推上去就ok"></a>最后将hexo d推上去就ok</h4>
       </div>
       
         <div class="copyright">
@@ -827,7 +785,7 @@
     </li>
     <li class="post-copyright-link">
     <strong>文章链接:  </strong>
-    <a href="/2021/11/25/Docker使用教程/" target="_blank" title="Docker使用教程">https://qumingnan24.github.io/2021/11/25/Docker使用教程/</a>
+    <a href="/2022/04/23/Linux搭建反向代理和git/" target="_blank" title="Linux搭建反向代理和git">https://qumingnan24.github.io/2022/04/23/Linux搭建反向代理和git/</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明:   </strong>
@@ -845,46 +803,20 @@
 
 
 
-  
-  <div class="post-nav-prev post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/4.jpg" style="background-size: cover; 
-      background-position: center center;">
-    </div>
-    <a href="/2022/04/23/Linux%E6%90%AD%E5%BB%BA%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E5%92%8Cgit/" class="post-nav-link">
-      <div class="title">
-        <i class="fa fa-angle-left"></i> 上一篇:
-        <div>Linux搭建反向代理和git</div>
-      </div>
-      
-      <!-- <div class="content">
-        Linux搭建反向代理和git前置：
-
-ubuntun 20.04
-nginx
-git-core
-
-
-先安装git和ng
-      </div> -->
-    </a>
-  </div>
-
 
 
   
   <div class="post-nav-next post-nav-item">
-    <div class="post-nav-img lazyload" data-original="/medias/13.jpg" style="background-size: cover; 
+    <div class="post-nav-img lazyload" data-original="/medias/8.jpg" style="background-size: cover; 
       background-position: center center;">
     </div>
-    <a href="/2021/11/15/vue%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-nav-link">
+    <a href="/2021/11/25/Docker%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/" class="post-nav-link">
       <div class="title">
         下一篇: <i class="fa fa-angle-right"></i>
-        <div>vue2笔记</div>
+        <div>Docker使用教程</div>
       </div>
       <!-- <div class="content">
-        vue2笔记脚手架文件结构├── node_modules 
-├── public
-│   ├── favicon.ic
+        Docker使用教程详细文档：https://yeasy.gitbook.io/docker_practice/inst
       </div> -->
     </a>
   </div>
